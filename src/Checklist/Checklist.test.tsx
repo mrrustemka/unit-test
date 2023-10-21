@@ -46,7 +46,7 @@ test("should render correct checked items when specified", () => {
   expect(screen.getByTestId("Checklist__input__1")).toBeChecked();
 });
 
-test("should check items when clicked", async () => {
+test("should check and uncheck items when clicked", async () => {
   const user = userEvent.setup();
   render(
     <Checklist
@@ -60,6 +60,8 @@ test("should check items when clicked", async () => {
   expect(lucyCheckbox).not.toBeChecked();
   await user.click(lucyCheckbox);
   expect(lucyCheckbox).toBeChecked();
+  await user.click(lucyCheckbox);
+  expect(lucyCheckbox).not.toBeChecked();
 });
 
 test("should call onChechedIdsChange when clicked", async () => {
